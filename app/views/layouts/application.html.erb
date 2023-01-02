@@ -13,6 +13,14 @@
   <body>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+    <% if user_signed_in? %>
+     Hola: <b> <%= current_user.email %></b>
+      <%= link_to 'Terminar Sesión', destroy_user_session_path, method: :delete %>
+      <%= link_to 'Configuración', edit_user_registration_path, method: :delete %>
+    <% else %>
+      <%= link_to 'Log in', new_user_session_path %>
+      <%= link_to 'Registrarse', new_user_registration_path %>
+    <% end %>
 
    <%= yield %>
   </body>
